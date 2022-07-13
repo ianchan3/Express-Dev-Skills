@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Express To-Do</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1>Todo #<%= todo.id %></h1>
-    <h3><%= todo.todo %></h3>
-    <h3>Complete: <%= todo.done ? 'Yes' : 'No' %></h3>
-  </body>
-</html>
+<%- include('../partials/header') %>
+
+<h1>Skill #<%= skill.id %></h1>
+<h3><%= skill.skill %></h3>
+<h3>Complete: <%= skill.done ? 'Yes' : 'No' %></h3>
+<a href="/skills/<%= skill.id %>/edit">EDIT SKILL</a>
+
+<%- include('../partials/footer') %>
