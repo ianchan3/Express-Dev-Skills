@@ -1,4 +1,4 @@
-const skill = require('../models/skill');
+const Skill = require('../models/skill');
 
 module.exports = {
   index,
@@ -12,17 +12,17 @@ module.exports = {
 
 function update(req, res) {
   req.body.done = !!req.body.done;
-  skill.update(req.params.id, req.body);
+  Skill.update(req.params.id, req.body);
   res.redirect(`/skills/${req.params.id}`);
 }
 
 function edit(req, res) {
-  const skill = skill.getOne(req.params.somethingcrazy);
+  const skill = Skill.getOne(req.params.id);
   res.render('skills/edit', { skill });
 }
 
 function deleteSkill(req, res) {
-  skill.delete(req.params.id);
+  Skill.delete(req.params.id);
   // If data is mutated we need to redirect
   // Where we redirect to, is entirely up to you
   // what do want your app to do?
@@ -32,7 +32,7 @@ function deleteSkill(req, res) {
 function create(req, res) {
   // The model is responsible for CRUD
   console.log('req.body', req.body)
-  skill.create(req.body);
+  Skill.create(req.body);
   // If data is updated/added we need to redirect
   // Where we redirect to, is entirely up to you
   // what do want your app to do?
@@ -48,12 +48,12 @@ function show(req, res) {
   // Get the skill for the id that is passed as a route param
   // All route params are accessed via the req.params object
   // console.log(req.params)
-  const skill = skill.getOne(req.params.id);
+  const skill = Skill.getOne(req.params.id);
   res.render('skills/show', { skill });
 }
 
 function index(req, res) {
   // Obtain the array of skills from the skill model
-  const skills = skill.getAll();
+  const skills = Skill.getAll();
   res.render('skills/index', { skills });
 }

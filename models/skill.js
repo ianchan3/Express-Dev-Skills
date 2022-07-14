@@ -12,17 +12,17 @@ module.exports = {
   update
 };
 
-function update(id, updatedskill) {
+function update(id, updatedSkill) {
   id = parseInt(id);
   const skill = skills.find((skill) => skill.id === id);
   //Merge the updatedSkill's properties into the
   //existing Skill object's properties
-  Object.assign(skill, updatedskill);
+  Object.assign(skill, updatedSkill);
 }
 
 function deleteOne(id) {
   id = parseInt(id);
-  const skillIdx = skills.findIndex((t) => t.id === id);
+  const skillIdx = skills.findIndex((s) => s.id === id);
   skills.splice(skillIdx, 1);
 }
 
